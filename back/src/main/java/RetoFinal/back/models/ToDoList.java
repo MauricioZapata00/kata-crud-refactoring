@@ -1,7 +1,8 @@
 package RetoFinal.back.models;
 
 import javax.persistence.*;
-import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "todo_lists")
@@ -15,7 +16,7 @@ public class ToDoList {
     private String name;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "toDoLists")
-    private ArrayList<ToDo> toDos = new ArrayList<>();
+    private Set<ToDo> toDos = new HashSet<>();
 
     public ToDoList() {
     }
@@ -40,11 +41,11 @@ public class ToDoList {
         this.name = name;
     }
 
-    public ArrayList<ToDo> getToDos() {
+    public Set<ToDo> getToDos() {
         return this.toDos;
     }
 
-    public void setToDos(ArrayList<ToDo> toDos) {
+    public void setToDos(Set<ToDo> toDos) {
         this.toDos = toDos;
     }
 }

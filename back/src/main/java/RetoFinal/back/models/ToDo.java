@@ -1,7 +1,8 @@
 package RetoFinal.back.models;
 
 import javax.persistence.*;
-import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "todos")
@@ -17,11 +18,11 @@ public class ToDo {
     private boolean complete;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "todo_lists",
+    @JoinTable(name = "todos_lists",
             joinColumns = {@JoinColumn(name = "todo_id")},
             inverseJoinColumns = {@JoinColumn(name = "todos_list_id")}
     )
-    private ArrayList<ToDoList> toDoLists = new ArrayList<>();
+    private Set<ToDoList> toDoLists = new HashSet<>();
 
     public ToDo() {
     }
@@ -55,11 +56,11 @@ public class ToDo {
         this.complete = complete;
     }
 
-    public ArrayList<ToDoList> getToDoLists() {
+    public Set<ToDoList> getToDoLists() {
         return this.toDoLists;
     }
 
-    public void setToDoLists(ArrayList<ToDoList> toDoLists) {
+    public void setToDoLists(Set<ToDoList> toDoLists) {
         this.toDoLists = toDoLists;
     }
 }

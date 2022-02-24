@@ -28,8 +28,10 @@ public class ToDoService {
     public void deleteToDo(Long id){
         this.toDoRepository.deleteById(id);
     }
-
+/*
     public void deleteAllToDosByToDoListId(Long id){
         this.toDoRepository.deleteAllByToDoListsId(id);
     }
+
+ */
 }
