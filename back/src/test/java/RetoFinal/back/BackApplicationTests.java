@@ -1,10 +1,10 @@
-package co.com.sofka.crud;
+package RetoFinal.back;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CrudApplicationTests {
+class BackApplicationTests {
 
 	@Test
 	void contextLoads() {
