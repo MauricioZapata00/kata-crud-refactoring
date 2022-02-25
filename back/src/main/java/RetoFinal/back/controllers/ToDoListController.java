@@ -35,16 +35,16 @@ public class ToDoListController {
     }
 
     @PostMapping(path = "/save/ToDo/{id}/{name}/{completed}")
-    public void createToDo(@PathVariable("id") Long id,
+    public ToDoList createToDo(@PathVariable("id") Long id,
                                             @PathVariable("name") String name,
                                             @PathVariable("completed") String completed){
-        this.toDoListService.insertToDo(id, name, completed);
+        return this.toDoListService.insertToDo(id, name, completed);
     }
 
     @DeleteMapping(path = "/delete/ToDo/{id}/{name}")
-    public void eraseToDo(@PathVariable("id") Long id,
+    public ToDoList eraseToDo(@PathVariable("id") Long id,
                                             @PathVariable("name") String name){
-        this.toDoListService.eraseToDo(id, name);
+        return this.toDoListService.eraseToDo(id, name);
     }
 
 }

@@ -29,14 +29,15 @@ public class ToDoListService {
         this.toDoListRepository.deleteById(id);
     }
 
-    public void insertToDo(Long id, String name, String completed){
+    public ToDoList insertToDo(Long id, String name, String completed){
         ToDoList currToDoList = this.getToDoListById(id);
         currToDoList.insertToDo(name, completed);
-
+        return this.saveToDoList(currToDoList);
     }
 
-    public void eraseToDo(Long id, String name){
+    public ToDoList eraseToDo(Long id, String name){
         ToDoList currToDoList = this.getToDoListById(id);
         currToDoList.eraseToDo(name);
+        return this.saveToDoList(currToDoList);
     }
 }

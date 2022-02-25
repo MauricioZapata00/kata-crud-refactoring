@@ -2,11 +2,24 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import EditToDoList from './components/EditToDoList';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
+
 //import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Routes>
+        <Route exact path="/" element={<App />} />
+        <Route exact path="/ToDoList" element={<EditToDoList />} />
+      </Routes>
+    </BrowserRouter>
+    
   </React.StrictMode>,
   document.getElementById('root')
 );
