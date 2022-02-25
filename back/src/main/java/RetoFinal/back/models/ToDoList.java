@@ -1,8 +1,9 @@
 package RetoFinal.back.models;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
+//https://stackoverflow.com/questions/55901477/how-to-pass-hashset-to-server-to-test-api-from-postman
 
 @Entity
 @Table(name = "todo_lists")
@@ -15,8 +16,9 @@ public class ToDoList {
     @Column(name = "todo_list_name")
     private String name;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "toDoLists")
-    private Set<ToDo> toDos = new HashSet<>();
+    @ElementCollection
+    @Column(name = "todos")
+    private Map<String, String> toDos = new HashMap<String, String>();
 
     public ToDoList() {
     }
@@ -41,11 +43,19 @@ public class ToDoList {
         this.name = name;
     }
 
-    public Set<ToDo> getToDos() {
+    public Map<String, String> getToDos() {
         return this.toDos;
     }
 
-    public void setToDos(Set<ToDo> toDos) {
+    public void setToDos(HashMap<String, String> toDos) {
         this.toDos = toDos;
+    }
+
+    public void insertToDo(String name, String completed){
+        this.toDos.put(name, completed);
+    }
+
+    public void eraseToDo(String name){
+        this.toDos.remove(name);
     }
 }

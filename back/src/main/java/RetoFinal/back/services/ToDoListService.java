@@ -13,12 +13,12 @@ public class ToDoListService {
     @Autowired
     ToDoListRepository toDoListRepository;
 
-    public ArrayList<ToDoList> findAllToDoLists(){
+    public ArrayList<ToDoList> getAllToDoLists(){
         return (ArrayList<ToDoList>) this.toDoListRepository.findAll();
     }
 
-    public ArrayList<ToDoList> findAllToDoListsById(Long id){
-        return this.toDoListRepository.findAllByToDoListId(id);
+    public ToDoList getToDoListById(Long id){
+        return this.toDoListRepository.findByToDoListId(id);
     }
 
     public ToDoList saveToDoList(ToDoList toDoList){
@@ -27,5 +27,16 @@ public class ToDoListService {
 
     public void deleteToDoList(Long id){
         this.toDoListRepository.deleteById(id);
+    }
+
+    public void insertToDo(Long id, String name, String completed){
+        ToDoList currToDoList = this.getToDoListById(id);
+        currToDoList.insertToDo(name, completed);
+
+    }
+
+    public void eraseToDo(Long id, String name){
+        ToDoList currToDoList = this.getToDoListById(id);
+        currToDoList.eraseToDo(name);
     }
 }
