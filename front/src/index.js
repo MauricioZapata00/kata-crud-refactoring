@@ -3,11 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import EditToDoList from './components/EditToDoList';
+import DeleteToDoList from './components/DeleteToDoList';
 import {
   BrowserRouter,
   Routes,
   Route,
 } from "react-router-dom";
+
+
 
 //import reportWebVitals from './reportWebVitals';
 
@@ -17,6 +20,7 @@ ReactDOM.render(
       <Routes>
         <Route exact path="/" element={<App />} />
         <Route exact path="/ToDoList" element={<EditToDoList />} />
+        <Route exact path="/DeleteToDoList" element={<DeleteToDoList />} />
       </Routes>
     </BrowserRouter>
     

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import EditToDoList from "./components/EditToDoList";
+import DeleteToDoList from "./components/DeleteToDoList";
 
 function App() {
 
@@ -25,8 +26,14 @@ function App() {
 
   const editToDoList = (currToDoList) => {
     console.log(currToDoList);
-    <EditToDoList currToDoList={currToDoList}/>
+    <EditToDoList />
     navigate("/ToDoList")
+  }
+
+  const deleteToDoList = (currToDoList) => {
+    console.log(currToDoList);
+    <DeleteToDoList />
+    navigate("/DeleteToDoList")
   }
 
   return (
@@ -52,7 +59,9 @@ function App() {
                   editToDoList(ToDos)}}>Editar Lista</button>
               </td>
               <td>
-                <button>Borrar Lista</button>
+                <button onClick={() =>{
+                  deleteToDoList(ToDos)
+                }}>Borrar Lista</button>
               </td>
 
             </tr>
